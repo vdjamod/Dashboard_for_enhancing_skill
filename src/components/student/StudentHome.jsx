@@ -1,34 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import StudentNavbar from "./StudentNavbar"
-import SearchBar from '../SearchBar';
-import LearningPath from '../LearningPath';
-import ClassroomList from '../teacher/ClassroomList';
-import { useNavigate, useParams } from 'react-router-dom';
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import StudentNavbar from "./StudentNavbar";
+import SearchBar from "../SearchBar";
+import LearningPath from "../LearningPath";
+import ClassroomList from "../teacher/ClassroomList";
+import { useNavigate, useParams } from "react-router-dom";
 
 const StudentHomePage = () => {
-  const [page, setPage] = useState('home');
-  const [query, setQuery] = useState('');
+  const [page, setPage] = useState("home");
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
-  const {stdid} = useParams();
-  const [isAuthorized, setIsAuthorized] = useState("");
+  const { stdid } = useParams();
+  const [isAuthorized, setIsAuthorized] = useState(false);
   // console.log(stdid);
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     setAllEmployee(
-  //       (await axios.post(`https://sih-2024-5.onrender.com//mcq`), {
+  useEffect(() => {
+    async function getData() {
+      try {
+        const res = await axios.get(
+          `https://sih-5.onrender.com/user/detail/${stdid}`
+        );
 
-  //       })
-  //     );
-  //   }
-  //   getData();
-  // }, []);
+        console.log(res);
+        console.log(res.status);
+
+        // if(res.status != 200) {
+        //   alert('You are not authorize student');
+        // }
+      } catch (error) {
+        console.log(error);
+
+        if(error.status == 500 || error.status == 404) {
+          alert('Student NOT FOUND')
+          navigate(`/signup`)
+        }
+      }
+    }
+    getData();
+  }, []);
 
   const [classrooms] = useState([
-    { id: 1, name: 'Math 101', description: 'Basic Mathematics' },
-    { id: 2, name: 'Science 101', description: 'Introduction to Science' },
+    { id: 1, name: "Math 101", description: "Basic Mathematics" },
+    { id: 2, name: "Science 101", description: "Introduction to Science" },
   ]);
 
   const handleSearch = (query) => {
@@ -40,18 +53,21 @@ const StudentHomePage = () => {
   };
 
   const handleSubmit = () => {
-    navigate(`/student/${stdid}`)  
-  }
+    navigate(`/student/${stdid}`);
+  };
 
   return (
     <div>
       <StudentNavbar setPage={setPage} />
       <div className="container mx-auto p-8">
-        {page === 'home' && (
+        {page === "home" && (
           <>
             <SearchBar onSearch={handleSearch} />
             {query && <LearningPath query={query} />}
-            <ClassroomList classrooms={classrooms} onTakeQuiz={handleTakeQuiz} />
+            <ClassroomList
+              classrooms={classrooms}
+              onTakeQuiz={handleTakeQuiz}
+            />
           </>
         )}
         {/* Additional page content based on 'page' state */}
@@ -61,5 +77,3 @@ const StudentHomePage = () => {
 };
 
 export default StudentHomePage;
-
-

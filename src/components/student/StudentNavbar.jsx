@@ -17,6 +17,10 @@ const StudentNavbar = ({ setPage }) => {
     navigate(`/student/${stdid}/dashboard`);
   }
 
+  const handleHome = () => {
+    navigate(`/`)
+  }
+
   return (
     <nav className="bg-gradient-to-r from-green-500 to-blue-500 p-4 shadow-lg">
       <div className="max-w-8xl mx-auto flex justify-between items-center">
@@ -25,7 +29,8 @@ const StudentNavbar = ({ setPage }) => {
           <span className="text-white font-extrabold text-xl tracking-wide">LearnLab</span>
         </div>
         <div className="space-x-8">
-          <button className="text-white font-medium hover:text-gray-300 transition duration-200">Profile</button>
+          <button onClick={handleHome} className="text-white font-medium hover:text-gray-300 transition duration-200">Home</button>
+          {/* <button className="text-white font-medium hover:text-gray-300 transition duration-200">Profile</button> */}
           <button className="text-white font-medium hover:text-gray-300 transition duration-200">View Class</button>
           <button onClick={handleDashboard} className="text-white font-medium hover:text-gray-300 transition duration-200">Dashboard</button>
           <button onClick={handleLearning} className="text-white font-medium hover:text-gray-300 transition duration-200">My Learning</button>

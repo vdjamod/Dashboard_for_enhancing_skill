@@ -13,6 +13,7 @@ const Home = () => {
           <a href="#" className="hover:text-yellow-300">About Us</a>
           <a href="#" className="hover:text-yellow-300">Feedback</a>
           <a href="/signup" className="hover:text-yellow-300">Signup</a>
+          <a href="/login" className="hover:text-yellow-300">Login</a>
         </div>
       </nav>
 
