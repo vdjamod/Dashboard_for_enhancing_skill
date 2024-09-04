@@ -6,7 +6,7 @@ import SignupForm from "./components/SignupForm";
 import UploadPdf from "./components/UploadPdf";
 
 import PageNotFound from "./utils/404PageNotFound"
-import PdfUpload from "./components/PdfUpload";
+// import PdfUpload from "./components/PdfUpload";
 
 import TeacherHome from "./components/teacher/TeacherHome"
 import TeacherLogin from "./components/teacher/TeacherLogin"
