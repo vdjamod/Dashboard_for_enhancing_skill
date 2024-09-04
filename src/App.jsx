@@ -27,6 +27,7 @@ import LearningProgress from "./components/LearningProgress";
 import QuizPage from "./components/QuizPage";
 import Dashboard from "./components/student/Dashboard";
 import LoginPage from "./components/LoginPage";
+import Chatbot from "./components/student/Chatbot";
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
           <Route path="/student/:stdid/learning" element={<LearningProgress />} />
           <Route path="/student/:stdid/dashboard" element={<Dashboard />} />
           <Route path="/student/:stdid/quiz/name" element={<QuizPage />} />
+          <Route path="/student/:stdid/chatbot" element={<Chatbot />} />
         </Routes>
       </Router>
     </>

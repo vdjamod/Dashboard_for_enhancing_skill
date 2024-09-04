@@ -14,6 +14,10 @@ const StudentHomePage = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
   // console.log(stdid);
 
+  const handleChatbot = () => {
+    navigate(`/student/${stdid}/chatbot`);
+  };
+
   useEffect(() => {
     async function getData() {
       try {
@@ -30,9 +34,9 @@ const StudentHomePage = () => {
       } catch (error) {
         console.log(error);
 
-        if(error.status == 500 || error.status == 404) {
-          alert('Student NOT FOUND')
-          navigate(`/signup`)
+        if (error.status == 500 || error.status == 404) {
+          alert("Student NOT FOUND");
+          navigate(`/signup`);
         }
       }
     }
@@ -72,6 +76,21 @@ const StudentHomePage = () => {
         )}
         {/* Additional page content based on 'page' state */}
       </div>
+
+      <div>
+        <button
+          onClick={handleChatbot}
+          className="px-6 ml-12 py-2 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-700 transition duration-150 ease-in-out"
+        >
+          Chatbot
+        </button>
+      </div>
+      {/* <button
+        type="submit"
+        className="px-6 py-2 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:bg-blue-700 transition duration-150 ease-in-out"
+      >
+        Search
+      </button> */}
     </div>
   );
 };

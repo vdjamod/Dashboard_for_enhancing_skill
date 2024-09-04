@@ -9,14 +9,14 @@ ChartJS.register(LinearScale, CategoryScale);
 
 
 function Dashboard() {
-  // Sample data for the charts
-  useEffect(() => {
-    const chartInstance = new Chart(ctx, { /* chart config */ });
+  // // Sample data for the charts
+  // useEffect(() => {
+  //   const chartInstance = new Chart(ctx, { /* chart config */ });
   
-    return () => {
-      chartInstance.destroy();
-    };
-  }, []);
+  //   return () => {
+  //     chartInstance.destroy();
+  //   };
+  // }, []);
   
   const videoLearningData = {
     labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"],
