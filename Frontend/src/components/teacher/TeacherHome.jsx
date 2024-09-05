@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import ClassroomList from "./ClassroomList";
-import Navbar from "./TeacherNavbar"
+import Navbar from "./TeacherNavbar";
 
 const TeacherHome = ({ setPage }) => {
   let { id } = useParams();
   const [classrooms, setClassrooms] = useState([
     {
-      name: "Mathematics 101",
-      description: "Basic introduction to Algebra and Geometry.",
+      name: "DSA",
+      description: "Data Structure Algorithams",
       subject: "Mathematics",
       startDate: "2024-09-10",
       endDate: "2024-12-10",
@@ -17,8 +17,8 @@ const TeacherHome = ({ setPage }) => {
         "https://via.placeholder.com/400x200.png?text=Mathematics",
     },
     {
-      name: "Physics 101",
-      description: "Understanding the laws of motion.",
+      name: "DSAA",
+      description: "Data Structure And Algorithams",
       subject: "Physics",
       startDate: "2024-09-15",
       endDate: "2024-12-15",
